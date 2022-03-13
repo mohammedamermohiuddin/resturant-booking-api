@@ -1,0 +1,3188 @@
+{
+	"info": {
+		"_postman_id": "7bd4e591-1e32-4560-8a84-10e8c77b08a1",
+		"name": "RESUTURANT-BOOKING-API",
+		"description": "This collection was bulit manily to demonstrate authentication Gatekeeper API and few calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate (Admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200){\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    postman.setEnvironmentVariable(\"AUTH_TOKEN\", \"Bearer \" + jsonData.authToken);\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable(\"AUTH_TOKEN\", \"\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeNumber\": \"{{ADMIN_EMP_NO}}\", \r\n    \"password\": \"{{ADMIN_EMP_PWD}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Authenticate"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"{{ADMIN_EMP_NO}}\", \r\n    \"password\": \"{{ADMIN_EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Authenticate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"600a6daf3f184ce12893cba7c67adae3\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "94e90cd8-c9a9-4135-a546-c5f26ee94b5c"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.368444"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"authToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTY0NzEzMjk2NCwiZXhwIjoxNjQ3MTYxNzY0fQ.7x60NyGcstSwD4DWFi8zWyzejAfd8BBhKNbRL6Ddf0g\",\n    \"validityInSeconds\": 28800,\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AI00006\",\n            \"statusDescription\": \"The user is valid and the token was generated successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"{{ADMIN_EMP_NO}}\", \r\n    \"password\": \"{{ADMIN_EMP_PWD}}121313\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Authenticate"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "bf89da80-7e45-4a86-921b-ce12e40c9cbc"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.264970"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00007\",\n            \"statusDescription\": \"Employee number or password is invalid and/or the transaction key or API key is invalid.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Authenticate (Employee) (Note: first register new employee)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200){\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    postman.setEnvironmentVariable(\"AUTH_TOKEN\", \"Bearer \" + jsonData.authToken);\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable(\"AUTH_TOKEN\", \"\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeNumber\": \"{{EMP_NO}}\", \r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Authenticate"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"{{EMP_NO}}\", \r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Authenticate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"52488a5582c72e707392bb54ceabcf58\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "48711647-21fc-4456-8024-8d27a25f8ecf"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.297338"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"authToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNSwidXNlcl9yb2xlIjoiZW1wbG95ZWUiLCJpYXQiOjE2NDcxMzMxNzMsImV4cCI6MTY0NzE2MTk3M30.B3xzxoI8qulXv_9Q2sMLpULKrMTCiJdRVgNY8VvYSUk\",\n    \"validityInSeconds\": 28800,\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AI00006\",\n            \"statusDescription\": \"The user is valid and the token was generated successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"{{EMP_NO}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Authenticate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Authenticate"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ad5da012-4579-4f81-b881-418b7b6a8036"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.002589"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00141\",\n            \"statusDescription\": \"The required parameters for this request was not found in payload.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Token/Validate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Token/Validate",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Token",
+						"Validate"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Token/Validate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Token",
+								"Validate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"de0a78fe827da6e7b71feaf859004c36\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "8d2570a7-66ce-4cce-b0f7-f19c05396c16"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.004730"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTY0NzEzMzI3MywiZXhwIjoxNjQ3MTYyMDczfQ.4D5SQ25fLB_lK4b81uc5y6xmPnsJxB9o4z-yPn2zTPk\",\n        \"validityInSeconds\": 28797\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AI00007\",\n            \"statusDescription\": \"The provided token is valid.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Token/Validate",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Token",
+								"Validate"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "8a2692a4-2369-4c8d-8b88-12ff07160f6f"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.004084"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00123\",\n            \"statusDescription\": \"No access token provided or the provided access token is invalid or has expired.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Register/Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200){\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    postman.setEnvironmentVariable(\"EMP_NO\", jsonData.data.employeeNumber);\r",
+							"}\r",
+							"else{\r",
+							"    postman.setEnvironmentVariable(\"EMP_NO\", \"\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeNumber\": \"0312\",\r\n    \"employeeRole\": \"employee\",\r\n    \"employeeName\": \"saaseae\",\r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Employee",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Register",
+						"Employee"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"0314\",\r\n    \"employeeRole\": \"employee\",\r\n    \"employeeName\": \"saaseae\",\r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Employee",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Employee"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"552e17a67a2aeb084613145be07709aa\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ff152d4c-3d2e-483f-888d-40e212cf2693"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.319347"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"employeeName\": \"Saaseae\",\n        \"employeeNumber\": \"0314\",\n        \"employeeRole\": \"Employee\",\n        \"employeeRegistrationId\": 36,\n        \"employeeRegisteredAt\": \"2022-03-13T01:02:26.900Z\"\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"U00200\",\n            \"statusDescription\": \"User registered successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"0312414\",\r\n    \"employeeRole\": \"employee\",\r\n    \"employeeName\": \"saaseae\",\r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Employee",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Employee"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "6944b91b-e0c2-4cd7-82f9-ad32af02a469"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.003995"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00144\",\n            \"statusDescription\": \"Employee number entered is not as per the standard, can consist only 4 digits.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"0312\",\r\n    \"employeeRole\": \"employee\",\r\n    \"employeeName\": \"saaseae\",\r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Employee",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Employee"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "477b583d-4d7f-43d0-aeca-e4ad78104595"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.006635"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00145\",\n            \"statusDescription\": \"Employee number already used.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Employee role access denied",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeNumber\": \"0317\",\r\n    \"employeeRole\": \"employee\",\r\n    \"employeeName\": \"saaseae\",\r\n    \"password\": \"{{EMP_PWD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Employee",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Employee"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "a8585990-fc86-4de0-8808-5bc62fb7b36a"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005881"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00139\",\n            \"statusDescription\": \"Access denied. Access Token does not have correct permissions for this API.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Tables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Tables?page=1&sort=ascending",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Tables"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "sort",
+							"value": "ascending"
+						}
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Tables?page=1&sort=ascending",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Tables"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6ab72a01d28fa859d7182a192b77d745\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "4d1a1adb-4185-4264-bff9-0d4044133a35"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.009122"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 1,\n        \"page\": 1,\n        \"itemsPerPage\": 10,\n        \"items\": [\n            {\n                \"tablenumber\": 1331,\n                \"numberofseats\": 12,\n                \"tableregistrationid\": 2,\n                \"tableregisteredat\": \"2022-03-13T01:08:47.155Z\"\n            }\n        ]\n    },\n    \"transactionStatus\": \"T00200\",\n    \"transactionDescription\": \"Table registered successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"T00100\",\n            \"statusDescription\": \"Tables retreived successfully.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "NoData",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Tables?page=2&sort=ascending",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Tables"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"738ae30213993207843956381bbe72f7\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "15dedc11-ffdd-46c5-8ecf-760fa4608178"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.094908"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 1,\n        \"page\": 2,\n        \"itemsPerPage\": 10,\n        \"items\": []\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"T00404\",\n            \"statusDescription\": \"No tables found.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Employee role access denied",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Tables?page=1&sort=ascending",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Tables"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "5e73ad6a-fed0-41ea-8621-89d81b1c95fa"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005819"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00139\",\n            \"statusDescription\": \"Access denied. Access Token does not have correct permissions for this API.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Register/Table",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"numberOfSeats\": \"12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Table",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Register",
+						"Table"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"numberOfSeats\": \"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Table",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Table"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4cce64fcdeb3969678f72753828fb97b\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "fcc332fd-66a1-4365-8c95-e1790ecde15e"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.032915"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"tableNumber\": 1331,\n        \"numberOfSeats\": 12,\n        \"tableRegistrationId\": 1,\n        \"tableRegisteredAt\": \"2022-03-13T01:05:55.706Z\"\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"T00200\",\n            \"statusDescription\": \"Table registered successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"numberOfSeats\": \"17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Table",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Table"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "94635830-fb8b-4c7b-9ab5-733e1ab403f7"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005177"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00202\",\n            \"statusDescription\": \"Number of seats entered is not as per the standard, can only be a number and can be between 1 and 12 only.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"Mun1231\",\r\n    \"numberOfSeats\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Table",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Table"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "182ac4ab-eb95-41af-b911-9fdb8020293f"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005229"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00201\",\n            \"statusDescription\": \"Table number entered is not as per the standard, can only be a number greater than 0.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Employee role access denied",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1311\",\r\n    \"numberOfSeats\": \"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Table",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Table"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ad7b3b44-45f8-4238-ba4f-ce6a8042d3fe"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.004420"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00139\",\n            \"statusDescription\": \"Access denied. Access Token does not have correct permissions for this API.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove/Table/:tableNumber",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Table/1331",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Remove",
+						"Table",
+						"1331"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Table/1331",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Remove",
+								"Table",
+								"1331"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"dda5187fd558488d39dfb3297d454fc2\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "2461b560-40b5-49db-9759-6d63b128dd72"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.015711"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"tableNumber\": 1331,\n        \"tableRegistrationId\": 1,\n        \"tableRegisteredAt\": \"2022-03-13T01:05:55.706Z\",\n        \"tableRemovedAt\": \"2022-03-13T01:07:18.376Z\"\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"T00210\",\n            \"statusDescription\": \"Table removed successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Table/1334",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Remove",
+								"Table",
+								"1334"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "6bee466c-6a01-4f8d-a11c-2cb86eed2f3e"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.008065"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00010\",\n            \"statusDescription\": \"No records have been found that match your query or the record have already been deleted or query does not meet the required criteria.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Employee role access denied",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Table/1331",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Remove",
+								"Table",
+								"1331"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "0eb77f54-4342-4fec-8b26-44e0980a3bcb"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005223"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00139\",\n            \"statusDescription\": \"Access denied. Access Token does not have correct permissions for this API.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Register/Reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"reservationStartAt\": \"2022-03-14 12:30\",\r\n    \"reservationEndAt\": \"2022-03-14 16:30\",\r\n    \"numberOfCustomers\": \"12\",\r\n    \"reservingCustomerName\": \"John Doe\",\r\n    \"reservingCustomerPhone\": \"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Reservation",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Register",
+						"Reservation"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"reservationStartAt\": \"2022-03-14 12:30\",\r\n    \"reservationEndAt\": \"2022-03-14 16:30\",\r\n    \"numberOfCustomers\": \"12\",\r\n    \"reservingCustomerName\": \"   asasa      sfsd          sdsdsd    \",\r\n    \"reservingCustomerPhone\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Reservation",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Reservation"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"384971522acc6958b9b1a3d9941a337a\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "6f8557f7-ac5e-4c8b-9ac9-6bef0323bdb9"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.011360"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"tableNumber\": 1331,\n        \"reservingCustomerName\": \"Asasa Sfsd Sdsdsd\",\n        \"reservingCustomerPhone\": \"1234567890\",\n        \"reservationStartAt\": \"2022-03-14T12:30:00.000Z\",\n        \"reservationEndAt\": \"2022-03-14T16:30:00.000Z\",\n        \"reservationRegistrationId\": 2,\n        \"reservationRegisteredAt\": \"2022-03-13T01:09:31.460Z\"\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00200\",\n            \"statusDescription\": \"Reservation registered successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"reservationStartAt\": \"2022-03-14 12:30\",\r\n    \"reservationEndAt\": \"2022-03-14 16:30\",\r\n    \"numberOfCustomers\": \"12\",\r\n    \"reservingCustomerName\": \"   asasa      sfsd          sdsdsd    \",\r\n    \"reservingCustomerPhone\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Reservation",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Reservation"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "6fb921d5-5bf9-4f4b-b1c2-0a4a982657b1"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.008096"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00214\",\n            \"statusDescription\": \"Reservation failed, reservation already exists between the selected time slot for this table.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableNumber\": \"1331\",\r\n    \"reservationStartAt\": \"2022-03-14 12:30\",\r\n    \"reservationEndAt\": \"2022-03-14 16:30\",\r\n    \"numberOfCustomers\": \"16\",\r\n    \"reservingCustomerName\": \"   asasa      sfsd          sdsdsd    \",\r\n    \"reservingCustomerPhone\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Register/Reservation",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Register",
+								"Reservation"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "fca9c3a2-d833-4a4f-9956-a1b90fc8127d"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.004740"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00210\",\n            \"statusDescription\": \"Reservation failed, number of customers exceed the number of the seats on table that is trying to br reserved.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Reservations?page=1&sort=ascending&date=2022-03-14",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Reservations"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "sort",
+							"value": "ascending"
+						},
+						{
+							"key": "date",
+							"value": "2022-03-14"
+						}
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Reservations?page=1&sort=ascending",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Reservations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c6358c50739c2eece8b0e406071c3639\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "0674d7d4-0d44-4c65-9c31-bd592666cbd1"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.014301"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 2,\n        \"page\": 1,\n        \"itemsPerPage\": 10,\n        \"items\": [\n            {\n                \"tablenumber\": 1331,\n                \"reservingcustomername\": \"Asasa Sfsd Sdsdsd\",\n                \"reservingcustomerphone\": \"1234567890\",\n                \"reservationstartat\": \"2022-12-03T12:30:00.000Z\",\n                \"reservationendat\": \"2022-12-03T16:30:00.000Z\",\n                \"reservationregistrationid\": 1,\n                \"reservationregisteredat\": \"2022-03-13T01:09:07.302Z\"\n            },\n            {\n                \"tablenumber\": 1331,\n                \"reservingcustomername\": \"Asasa Sfsd Sdsdsd\",\n                \"reservingcustomerphone\": \"1234567890\",\n                \"reservationstartat\": \"2022-03-14T12:30:00.000Z\",\n                \"reservationendat\": \"2022-03-14T16:30:00.000Z\",\n                \"reservationregistrationid\": 2,\n                \"reservationregisteredat\": \"2022-03-13T01:09:31.460Z\"\n            }\n        ]\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00200\",\n            \"statusDescription\": \"Reservation registered successfully.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Success (with date, Note: For Employee role even if they apply date filter they will only get current date reservation as specified in project document)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Reservations?page=1&sort=ascending&date=2022-03-14",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Reservations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								},
+								{
+									"key": "date",
+									"value": "2022-03-14"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"0b1f61ad3212e0510ae57ba536d76462\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "b5a4b992-ee18-41ff-833a-f165b8031622"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.006016"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 1,\n        \"page\": 1,\n        \"itemsPerPage\": 10,\n        \"items\": [\n            {\n                \"tablenumber\": 1331,\n                \"reservingcustomername\": \"Asasa Sfsd Sdsdsd\",\n                \"reservingcustomerphone\": \"1234567890\",\n                \"reservationstartat\": \"2022-03-14T12:30:00.000Z\",\n                \"reservationendat\": \"2022-03-14T16:30:00.000Z\",\n                \"reservationregistrationid\": 2,\n                \"reservationregisteredat\": \"2022-03-13T01:09:31.460Z\"\n            }\n        ]\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00200\",\n            \"statusDescription\": \"Reservation registered successfully.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "NoData",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Reservations?page=6&sort=ascending&date=2022-03-14",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Reservations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "6"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								},
+								{
+									"key": "date",
+									"value": "2022-03-14"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27829d3f216fd364ce17f109c8ae9f85\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "3d01afa3-1aa0-4caf-ac4c-e7555978ed67"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.006610"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 1,\n        \"page\": 6,\n        \"itemsPerPage\": 10,\n        \"items\": []\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00404\",\n            \"statusDescription\": \"No reservations found.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Employee can only see current date data even with date filter(Note: There are no reserveration for current date)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Reservations?page=1&sort=ascending&date=2022-03-14",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Reservations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "ascending"
+								},
+								{
+									"key": "date",
+									"value": "2022-03-14"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ab68cdacb3919a18a61454058e466557\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "88cf9a48-1f3f-4382-ab26-1cd713fb83a1"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.007180"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"totalItems\": 0,\n        \"page\": 1,\n        \"itemsPerPage\": 10,\n        \"items\": []\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00404\",\n            \"statusDescription\": \"No reservations found.\"\n        },\n        {\n            \"statusCode\": \"I00100\",\n            \"statusDescription\": \"Pagniation applied.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Logout",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Logout"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Logout",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"18149afe49605c01e3660491a34be93b\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "95a8a869-4aac-4ca7-8d04-240c5ac5f4f3"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.009207"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"authToken\": null,\n        \"validityInSeconds\": null\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AI00008\",\n            \"statusDescription\": \"Token destroyed successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Logout",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Logout"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "d67ec3cb-be56-4567-8f87-ad811cd77b1f"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.005132"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00123\",\n            \"statusDescription\": \"No access token provided or the provided access token is invalid or has expired.\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove/Reservation/:reservationRegistrationId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Reservation/1",
+					"host": [
+						"{{RESUTURANT-BOOKING-API-URL}}"
+					],
+					"path": [
+						"Remove",
+						"Reservation",
+						"1"
+					]
+				},
+				"description": "To generate auth token"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Reservation/1",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Remove",
+								"Reservation",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f599b2854f8be617e4dbe3404edbd042\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "05b18e15-3aed-4539-a8b1-9cc63eadd10f"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.032205"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"reservationRegistrationId\": 1,\n        \"reservationRegisteredAt\": \"2022-03-13T01:09:07.302Z\",\n        \"reservationRemovedAt\": \"2022-03-13T01:19:30.807Z\"\n    },\n    \"transactionStatus\": \"I00001\",\n    \"transactionDescription\": \"The request was processed successfully.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"R00210\",\n            \"statusDescription\": \"Reservation removed successfully.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Failure",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AUTH_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{RESUTURANT-BOOKING-API-URL}}/Remove/Reservation/1",
+							"host": [
+								"{{RESUTURANT-BOOKING-API-URL}}"
+							],
+							"path": [
+								"Remove",
+								"Reservation",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "3d66c7cc-5a5d-4920-b6e3-a10dc39efc75"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.007046"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"transactionStatus\": \"E00001\",\n    \"transactionDescription\": \"The request could not be processed as there were errors.\",\n    \"statusCodes\": [\n        {\n            \"statusCode\": \"AE00010\",\n            \"statusDescription\": \"No records have been found that match your query or the record have already been deleted or query does not meet the required criteria.\"\n        },\n        {\n            \"statusCode\": \"AE00219\",\n            \"statusDescription\": \"Reservation not found or reservation trying to be deleted is not from the future.\"\n        },\n        {\n            \"statusCode\": \"R00404\",\n            \"statusDescription\": \"No reservations found.\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

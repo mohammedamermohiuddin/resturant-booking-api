@@ -1,0 +1,43 @@
+version: "3.3"
+services:
+  db:
+    image: postgres
+    expose:
+      - "5434"
+    ports:
+      - 5434:5434
+    volumes:
+      - ./backups:/home/backups
+    environment:
+      POSTGRES_DB: RESTURANT_BOOKING_DEV
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    command: -p 5434
+  migration:
+    build: .
+    image: app
+    command: bundle exec rails db:drop db:create db:migrate db:seed
+    volumes:
+      - .:/myappmigration
+    depends_on:
+      - db
+    environment:
+      DB_URL: postgresql://postgres:password@db:5434/RESTURANT_BOOKING_DEV?timeout=12000&connect_timeout=5&pool=10
+      FIRST_ADMIN_PWD: RestRoot@9810!!
+      SECRET_KEY_BASE: 93c05b37f88d3f0ea9551d74fc96c0785a7ff27c3cf0f77980b4c221aaddffce5de83f760a439009f85e7c0c021846e80810e80d18091e9eb95962775e5b09a5
+  web:
+    build: .
+    command: bundle exec rails s -p 7000 -b '0.0.0.0'
+    expose:
+      - "7000"
+    volumes:
+      - .:/myapp
+    ports:
+      - "7000:7000"
+    depends_on:
+      - db
+      - migration
+    environment:
+      DB_URL: postgresql://postgres:password@db:5434/RESTURANT_BOOKING_DEV?timeout=12000&connect_timeout=5&pool=10
+      FIRST_ADMIN_PWD: RestRoot@9810!!
+      SECRET_KEY_BASE: 93c05b37f88d3f0ea9551d74fc96c0785a7ff27c3cf0f77980b4c221aaddffce5de83f760a439009f85e7c0c021846e80810e80d18091e9eb95962775e5b09a5
