@@ -26,12 +26,12 @@ You can use postman collection to test and validate the APIs documentation
 
 4) Delete a table, but cannot delete a table if it has Reservation
 
-5) Admin can see all tables , with pagination page by page and sort ascending or descending
+5) Admin can see all tables, with pagination page by page and sort ascending or descending
 
 6) Admin can see list of reservations for today and as well as in the past and future dates
 
 7) Admin can add a reservation only for future time with selecting 
-table based of number of customers , the table should have enough number of seats, Admin cannot reserve if there is a reservation on the time slot already
+table based on number of customers, the table should have enough number of seats, Admin cannot reserve if there is a reservation on the time slot already
 
 8) Admin can delete reservations only of the past, not of the future
 
@@ -44,6 +44,6 @@ table based of number of customers , the table should have enough number of seat
 2) Employee can see list of reservations ONLY for today with Pagination page by page
 
 3) Employee can add a reservation only for future time with selecting 
-table based of number of customers , the table should have enough number of seats, Admin cannot reserve if there is a reservation on the time slot already
+table based on number of customers, the table should have enough number of seats, Admin cannot reserve if there is a reservation on the time slot already
 
 4) Employee can delete reservations only of the past, not of the future
